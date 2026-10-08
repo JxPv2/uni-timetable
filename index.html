@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Uni Timetable — Subscribe</title>
+<style>
+  :root { color-scheme: light dark; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    max-width: 640px; margin: 3rem auto; padding: 0 1.5rem; line-height: 1.6;
+  }
+  h1 { font-size: 1.6rem; margin-bottom: 0.25rem; }
+  p.sub { color: #888; margin-top: 0; }
+
+  section { margin-top: 2.5rem; }
+  h2 { font-size: 1.1rem; margin-bottom: 0.75rem; }
+
+  a.button, button.button {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.75rem 1.25rem; margin: 0.25rem 0.5rem 0.25rem 0;
+    background: #0a84ff; color: white;
+    text-decoration: none; border: none; border-radius: 8px;
+    font-weight: 500; font-size: 0.95rem; cursor: pointer;
+    font-family: inherit;
+  }
+  a.button:hover, button.button:hover { background: #0066cc; }
+  a.button.secondary, button.button.secondary {
+    background: transparent; color: #0a84ff;
+    border: 1px solid #0a84ff;
+  }
+  a.button.secondary:hover, button.button.secondary:hover {
+    background: rgba(10,132,255,0.1);
+  }
+
+  code {
+    display: block; padding: 0.75rem; margin-top: 0.5rem;
+    background: rgba(128,128,128,0.15); border-radius: 6px;
+    font-family: ui-monospace, monospace; font-size: 0.85rem;
+    word-break: break-all;
+  }
+  ol { padding-left: 1.2rem; }
+  li { margin-bottom: 0.4rem; }
+  .note { font-size: 0.85rem; color: #888; margin-top: 0.4rem; }
+</style>
+</head>
+<body>
+
+<h1>Uni Timetable</h1>
+<p class="sub">Auto-updating feed from the Tor Vergata Business Administration timetable.</p>
+
+<section>
+  <h2>🍎 Apple Calendar</h2>
+  <a class="button" href="webcal://jxPv2.github.io/uni-timetable/calendar.ics">
+    Subscribe in Apple Calendar
+  </a>
+  <p class="note">Tap this on your iPhone, iPad, or Mac. It opens Calendar and asks to confirm the subscription.</p>
+</section>
+
+<section>
+  <h2>📅 Google Calendar</h2>
+  <a class="button" target="_blank"
+     href="https://calendar.google.com/calendar/r?cid=webcal://jxPv2.github.io/uni-timetable/calendar.ics">
+    Try one-click subscribe
+  </a>
+  <button class="button secondary" onclick="copyFeed()">Copy feed URL</button>
+  <p class="note">If the button above doesn't work, use <a href="https://calendar.google.com/calendar/u/0/r/settings/addbyurl" target="_blank">Add by URL</a> in Google Calendar settings and paste the copied URL.</p>
+</section>
+
+<section>
+  <h2>📧 Outlook</h2>
+  <button class="button secondary" onclick="copyFeed()">Copy feed URL</button>
+  <p class="note">In Outlook: Calendar → Add calendar → Subscribe from web → paste the URL.</p>
+</section>
+
+<section>
+  <h2>🔗 Any other calendar app</h2>
+  <button class="button secondary" onclick="copyFeed()">Copy feed URL</button>
+  <code>https://jxPv2.github.io/uni-timetable/calendar.ics</code>
+</section>
+
+<script>
+function copyFeed() {
+  const url = 'https://jxPv2.github.io/uni-timetable/calendar.ics';
+  navigator.clipboard.writeText(url).then(() => {
+    alert('Feed URL copied to clipboard.');
+  }).catch(() => {
+    prompt('Copy this URL:', url);
+  });
+}
+</script>
+
+</body>
+</html>

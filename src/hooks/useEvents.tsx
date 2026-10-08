@@ -3,7 +3,7 @@ import { parseICS, type CalEvent } from '@/lib/ics';
 
 export const FEED_HTTPS = 'https://jxpv2.github.io/uni-timetable/calendar.ics';
 export const FEED_WEBCAL = 'webcal://jxpv2.github.io/uni-timetable/calendar.ics';
-export const GOOGLE_SUB = `https://calendar.google.com/calendar/render?cid=${encodeURIComponent(FEED_HTTPS)}`;
+export const GOOGLE_SUB = `https://calendar.google.com/calendar/render?cid=${encodeURIComponent(FEED_WEBCAL)}`;
 export const OUTLOOK_SUB = `https://outlook.live.com/calendar/0/addfromweb?url=${encodeURIComponent(FEED_HTTPS)}&name=${encodeURIComponent('Uni Timetable')}`;
 export const GOOGLE_SETTINGS = 'https://calendar.google.com/calendar/u/0/r/settings/addbyurl';
 

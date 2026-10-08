@@ -1,0 +1,137 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Warm neutral light theme */
+    --background: 60 5% 95%;        /* #f4f4f2 */
+    --foreground: 0 0% 9%;          /* #171717 */
+    --card: 60 6% 97%;
+    --card-foreground: 0 0% 9%;
+    --popover: 60 6% 97%;
+    --popover-foreground: 0 0% 9%;
+    --primary: 245 87% 64%;         /* #675BF4 */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 45 4% 92%;         /* #f0efed */
+    --secondary-foreground: 0 0% 9%;
+    --muted: 45 4% 92%;
+    --muted-foreground: 0 0% 45%;   /* #737373 */
+    --accent: 245 87% 64%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 72% 50%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 88%;             /* #e5e5e5 */
+    --input: 0 0% 84%;
+    --ring: 245 87% 64%;
+    --radius: 0.625rem;
+    --surface-alt: 45 4% 92%;
+  }
+
+  .dark {
+    /* Deep navy-black with cream text */
+    --background: 240 20% 5%;       /* #0a0a0f */
+    --foreground: 50 30% 93%;       /* #F5F4EB */
+    --card: 240 14% 8%;
+    --card-foreground: 50 30% 93%;
+    --popover: 240 14% 8%;
+    --popover-foreground: 50 30% 93%;
+    --primary: 245 90% 72%;
+    --primary-foreground: 240 20% 6%;
+    --secondary: 240 8% 13%;
+    --secondary-foreground: 50 30% 93%;
+    --muted: 240 8% 13%;
+    --muted-foreground: 240 6% 62%;
+    --accent: 245 90% 72%;
+    --accent-foreground: 240 20% 6%;
+    --destructive: 0 72% 55%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 8% 16%;
+    --input: 240 8% 22%;
+    --ring: 245 90% 72%;
+    --surface-alt: 240 10% 8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    transition: background-color 0.25s ease, color 0.25s ease;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: 'Space Grotesk', 'Inter', -apple-system, sans-serif;
+  }
+  .font-mono2 {
+    font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  }
+  .label-caps {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 0.7rem;
+    font-weight: 500;
+  }
+  /* Event chip colors driven by a per-course CSS variable */
+  .course-chip {
+    background: color-mix(in srgb, var(--c) 16%, transparent);
+    border: 1px solid color-mix(in srgb, var(--c) 40%, transparent);
+  }
+  .course-block {
+    background: color-mix(in srgb, var(--c) 20%, transparent);
+    border-left: 3px solid var(--c);
+  }
+  .dark .course-chip {
+    background: color-mix(in srgb, var(--c) 24%, transparent);
+    border: 1px solid color-mix(in srgb, var(--c) 50%, transparent);
+  }
+  .dark .course-block {
+    background: color-mix(in srgb, var(--c) 26%, transparent);
+  }
+}
+
+/* Gentle entrance animation */
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.rise-in {
+  animation: rise-in 0.5s ease both;
+}
+.rise-in-1 { animation-delay: 0.05s; }
+.rise-in-2 { animation-delay: 0.12s; }
+.rise-in-3 { animation-delay: 0.2s; }
+
+/* View transition for calendar panels */
+@keyframes view-fade {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.view-fade {
+  animation: view-fade 0.22s ease both;
+}
+
+/* Custom scrollbar for week view horizontal scroll */
+.week-scroll::-webkit-scrollbar {
+  height: 8px;
+}
+.week-scroll::-webkit-scrollbar-thumb {
+  background: hsl(var(--border));
+  border-radius: 4px;
+}
